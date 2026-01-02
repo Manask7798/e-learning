@@ -1,6 +1,5 @@
 # Dieser Code ist geschrieben Anlehung an
 # https://docs.streamlit.io/develop/tutorials/chat-and-llm-apps/build-conversational-apps
-import asyncio
 from typing import TypedDict, Annotated, List
 import streamlit as st
 import os
@@ -8,6 +7,8 @@ from langchain_core.messages import SystemMessage, AnyMessage, HumanMessage, AIM
 from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.graph import StateGraph, END
+
+from message_handler import MessageHandler
 from search_tool import SearchTool
 import chromadb
 from chromadb.utils import embedding_functions
@@ -20,8 +21,10 @@ FAQ = True
 SYSTEM_PROMPT=("Du bist ein freundlicher Lern-Assistent. Wenn du das"
                "Such-Tool verwendest, formatiere die Quellenangaben aus den Metadaten (Feld"
                "*metadatas* im zurückgelieferten Objekt des SearchTools"
-               "mit nummerierten Referenzen (z.B. [1]) im Text und der entsprechenden Quellenangabe"
-               "am Ende (z.B. [1] Kapitel 3. Kuchenfiltration, S. 23)")
+               "mit nummerierten Referenzen (z.B. [1], [2], [3]) im Text und der entsprechenden Quellenangabe"
+               "am Ende (z.B. [1] ZOGG.pdf, Kapitel 3. Kuchenfiltration, S. 23) [2] ZOGG.pdf, Kapitel 4 Druckfiltration, S. 58 [3] ZOGG.pdf, Kapitel 10 Vakuumfiltration, S. 230-260 ")
+MODEL_NAME="openai/gpt-5-mini"
+MAX_TOKEN=24000
 
 # Initialisiere Nachrichten
 if "messages" not in st.session_state:
@@ -32,7 +35,7 @@ if "base_llm" not in st.session_state:
     st.session_state.base_llm = ChatOpenAI(
         api_key=os.getenv("OPENROUTER_API_KEY"),
         base_url="https://openrouter.ai/api/v1",
-        model="openai/gpt-5-mini",
+        model=MODEL_NAME,
         temperature=0.0,
         streaming=True
     )
@@ -101,22 +104,22 @@ if prompt := st.chat_input("Frag, für mehr Informationen!"):
     with st.chat_message("user"):
         st.write(content)
 
-    history_msgs: List[AnyMessage] = []
+    history_msgs = MessageHandler(model=MODEL_NAME.split("/")[-1],max_tokens=24000)
     for role, content in st.session_state.messages:
-        history_msgs.append(HumanMessage(content=content) if role == "user" else AIMessage(content=content))
+        history_msgs.add_message(HumanMessage(content=content) if role == "user" else AIMessage(content=content))
 
     # Nachrichten streamen
     with st.chat_message("assistant"):
         full_response = ""
         message_placeholder = st.empty()
 
-        for event in st.session_state.app_graph.stream({"messages": history_msgs, "llm": st.session_state.llm}, stream_mode="messages"):
+        for event in st.session_state.app_graph.stream({"messages": history_msgs.get_conversation(), "llm": st.session_state.llm}, stream_mode="messages"):
             # Extract content from the event
             if isinstance(event[0], AIMessageChunk):
                 chunk_content = event[0].content
                 if chunk_content:
                     full_response += chunk_content
-                    message_placeholder.markdown(full_response + "▌")
+                    message_placeholder.markdown(full_response + " ")
 
         # Finale KI-Nachricht anzeigen
         message_placeholder.markdown(full_response)

@@ -3,8 +3,9 @@ from chromadb.utils import embedding_functions
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pypdf import PdfReader
 from uuid import uuid4
+from dotenv import load_dotenv
 
-
+load_dotenv()
 pdf_path = "ZOGG.pdf"
 
 # PDF laden
@@ -34,6 +35,7 @@ client = chromadb.PersistentClient(path="./chroma_db")
 emb = embedding_functions.SentenceTransformerEmbeddingFunction(
     model_name="jinaai/jina-embeddings-v2-base-de"
 )
+
 collection = client.get_or_create_collection(
     "verfahrenstechnik",
     embedding_function=emb
