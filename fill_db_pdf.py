@@ -9,18 +9,14 @@ load_dotenv()
 documents = {
      "doc1" : {
          "title" : "Einführung in die Verfahrenstechnik",
-         "path" : "sources/ZOGG.pdf"
-     },
-     "doc2" : {
-         "title" : "Krümelkunde",
-         "path" : "sources/Kruemelkunde_2016.pdf"
+         "path" : "sources/ZOGG-kurz.pdf"
      }
  }
 # # PDF laden
 pages = []
 for key, doc in documents.items():
      reader = PdfReader(doc["path"])
-     for page_number, page in enumerate(reader.pages, start=1):
+     for page_number, page in enumerate(reader.pages, start=85):
          text = page.extract_text()
          if text:
              pages.append({
@@ -33,20 +29,26 @@ print(f"Loaded PDF with {len(pages)} pages")
 
 # Text in kleinere Bestandteile (Chunks) aufteilen
 text_splitter = RecursiveCharacterTextSplitter(
-     chunk_size=800,
-     chunk_overlap=100,
+     chunk_size=350,
+     chunk_overlap=150,
  )
 #
 # # Vektordatenbank einrichten und Kollektion erstellen
-client = chromadb.PersistentClient(path="chroma_db")
+client = chromadb.PersistentClient(path="./chroma_neu")
 emb = embedding_functions.SentenceTransformerEmbeddingFunction(
      model_name="jinaai/jina-embeddings-v2-base-de",
      device="cpu"
 )
 collection = client.get_or_create_collection(
      "verfahrenstechnik",
-     embedding_function=emb
- )
+     embedding_function=emb,
+     metadata={
+        "hnsw:space": "cosine",
+        "hnsw:M": 32,
+        "hnsw:construction_ef": 400,
+        "hnsw:search_ef": 200
+     }
+)
 #
 ids = []
 metadatas = []
@@ -72,28 +74,9 @@ print("Stored PDF in Chroma.")
 
 # Die Datenbank abfragen
 query = "Welche anderen Filtrationsmethoden gibt es außer Druckfiltration?"
-results1 = collection.query(
+results = collection.query(
     query_texts=[query],
-    n_results=5,
-)
-results2 = collection.query(
-    query_texts=[query],
-    n_results=5,
+    n_results=10,
 )
 
-results1 = collection.query(
-    query_texts=[query],
-    n_results=5,
-)
-results3 = collection.query(
-    query_texts=[query],
-    n_results=5,
-)
-
-
-print(results1)
-print(results2)
-print(results3)
-print(collection.count())
-print(collection.count())
-print(collection.count())
+print(results)

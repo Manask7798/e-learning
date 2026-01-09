@@ -31,7 +31,7 @@ class SearchTool(BaseTool):
         try:
             results = self.collection.query(
                 query_texts=[query],
-                n_results=5,
+                n_results=10,
             )
             print(results)
             return results
