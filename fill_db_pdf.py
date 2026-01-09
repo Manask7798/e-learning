@@ -6,27 +6,29 @@ from uuid import uuid4
 from dotenv import load_dotenv
 
 load_dotenv()
-pdf_path = "ZOGG.pdf"
-
+documents = {
+    "doc1" : {
+        "title" : "Einführung in die Verfahrenstechnik",
+        "path" : "sources/ZOGG.pdf"
+    },
+    "doc2" : {
+        "title" : "Krümelkunde",
+        "path" : "sources/Kruemelkunde_2016.pdf"
+    }
+}
 # PDF laden
-reader = PdfReader(pdf_path)
 pages = []
+for key, doc in documents.items():
+    reader = PdfReader(doc["path"])
+    for page_number, page in enumerate(reader.pages, start=1):
+        text = page.extract_text()
+        if text:
+            pages.append({
+                "page": page_number,
+                "text": text,
+                "title": doc["title"]
+            })
 
-#for page in reader.pages:
-#    text = page.extract_text()
-#    if text:
-#        pages.append(text)
-
-pages = []
-for page_number, page in enumerate(reader.pages, start=1):
-    text = page.extract_text()
-    if text:
-        pages.append({
-            "page": page_number,
-            "text": text
-        })
-
-#full_text = "\n".join(pages)
 print(f"Loaded PDF with {len(pages)} pages")
 
 # Text in kleinere Bestandteile (Chunks) aufteilen
@@ -35,8 +37,6 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_overlap=100,
 )
 
-#chunks = text_splitter.split_text(full_text)
-#print(f"Created {len(chunks)} chunks")
 # Vektordatenbank einrichten und Kollektion erstellen
 client = chromadb.PersistentClient(path="./chroma_db")
 emb = embedding_functions.SentenceTransformerEmbeddingFunction(
@@ -46,15 +46,7 @@ collection = client.get_or_create_collection(
     "verfahrenstechnik",
     embedding_function=emb
 )
-# PDF-Bestandteile (Chunks) zur Vektordatenbank hinzufügen
-#ids = [str(uuid4()) for _ in chunks]
-#metadatas = [{"source": pdf_path, "page": i} for i in range(len(chunks))]
 
-#collection.add(
-#    documents=chunks,
-#    metadatas=metadatas,
-#    ids=ids
-#)
 ids = []
 metadatas = []
 chunks = []
@@ -64,7 +56,7 @@ for page in pages:
     for chunk in page_chunks:
         chunks.append(chunk)
         metadatas.append({
-            "source": pdf_path,
+            "source": page["title"],
             "page": page["page"]
         })
         ids.append(str(uuid4()))
