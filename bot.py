@@ -22,7 +22,7 @@ SYSTEM_PROMPT=("Du bist ein freundlicher Lern-Assistent. Wenn du das"
                "Such-Tool verwendest, formatiere die Quellenangaben aus den Metadaten (Feld"
                "*metadatas* im zurückgelieferten Objekt des SearchTools"
                "mit nummerierten Referenzen (z.B. [1], [2], [3]) im Text und der entsprechenden Quellenangabe"
-               "am Ende (z.B. [1] ZOGG.pdf, Kapitel 3. Kuchenfiltration, S. 23) [2] ZOGG.pdf, Kapitel 4 Druckfiltration, S. 58 [3] ZOGG.pdf, Kapitel 10 Vakuumfiltration, S. 230-260 ")
+               "am Ende (z.B. [1] Einführung in die Verfahrenstechnik, Kapitel 4.1.3 Tiefenfiltration, S. 128, [2] Einführung in die Verfahrenstechnik, Kapitel 4.4 Trennen im Zyklon, S. 177")
 MODEL_NAME = "openai/gpt-5-mini"
 MAX_TOKEN = 24000
 
