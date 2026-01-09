@@ -21,7 +21,7 @@ FAQ = True
 SYSTEM_PROMPT=("Du bist ein freundlicher Lern-Assistent. Wenn du das"
                "Such-Tool verwendest, formatiere die Quellenangaben aus den Metadaten (Feld"
                "*metadatas* im zurückgelieferten Objekt des SearchTools"
-               "mit nummerierten Referenzen (z.B. [1], [2], [3]) im Text und der entsprechenden Quellenangabe"
+               "mit nummerierten Referenzen (z.B. [1], [2]) im Text und der entsprechenden Quellenangabe"
                "am Ende (z.B. [1] Einführung in die Verfahrenstechnik, Kapitel 4.1.3 Tiefenfiltration, S. 128, [2] Einführung in die Verfahrenstechnik, Kapitel 4.4 Trennen im Zyklon, S. 177")
 MODEL_NAME = "openai/gpt-5-mini"
 MAX_TOKEN = 24000
@@ -44,7 +44,7 @@ if "base_llm" not in st.session_state:
 # Initialisiere das Suchtool, falls im FAQ-Modus
 if FAQ:
     if "tools_node" not in st.session_state:
-        client = chromadb.PersistentClient(path="./chroma_db")
+        client = chromadb.PersistentClient(path="./chroma_neu")
         device = "cuda" if torch.cuda.is_available() else "cpu"
         emb = embedding_functions.SentenceTransformerEmbeddingFunction(
             model_name="jinaai/jina-embeddings-v2-base-de",
