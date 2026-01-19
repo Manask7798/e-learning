@@ -11,63 +11,96 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header class="d-flex flex-wrap justify-content-center py-3 bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4 shadow">
     <div class="container">
-      <ul class="nav nav-pills justify-content-end">
-        <li class="nav-item m-1"><a href="/" class="nav-link active">Home</a></li>
-        <li class="nav-item m-1"><a href="/about" class="nav-link active">Über uns</a></li>
-        <li class="nav-item m-1"><a href="/faq" class="nav-link active">FAQs</a></li>
-      </ul>
+      <a class="navbar-brand fw-bold" href="index.html">
+        Vakuum- und Druckfiltration
+      </a>
     </div>
-  </header>
+  </nav>
 
-  <!-- CONTENT -->
-  <main class="container">
+  <main class="container" style="min-height: 80vh;">
+    <!-- Hero / Einleitung -->
+    <div class="p-5 mb-4 bg-light rounded-3 shadow-sm">
+      <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold text-primary">Vorbereitung Laborpraktikum</h1>
+        <p class="col-md-8 fs-4">Thema: Druck- und Vakuumfiltration.</p>
+        <p>Willkommen zur digitalen Vorbereitung für die Studiengänge
+          „Green Engineering“ und „Chemie- und Umwelttechnik“.
+        </p>
+        <p>
+          Bearbeiten Sie bitte alle Module in der vorgegebenen Reihenfolge,
+          bevor Sie das Laborpraktikum und das Antestat absolvieren.
+        </p>
+      </div>
+    </div>
 
-    <!-- Lumi / H5P Inhalt -->
-    <iframe
-      src="https://app.lumi.education/api/v1/run/JjjU-y/embed"
-      width="1088"
-      height="720"
-      frameborder="0"
-      allowfullscreen="allowfullscreen">
-    </iframe>
+    <!-- Modul-Übersicht -->
+    <div class="text-center mb-4">
+      <h2>Lerneinheiten wählen</h2>
+      <p class="text-muted">Bitte bearbeiten Sie die Module in der vorgegebenen Reihenfolge.</p>
+    </div>
 
-    <script
-      src="https://app.lumi.education/api/v1/h5p/core/js/h5p-resizer.js"
-      charset="UTF-8">
-    </script>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 bg-light">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title text-primary">Modul 1</h5>
+            <h4 class="card-text my-2">Grundlagen</h4>
+            <p class="text-muted small flex-grow-1">
+              Theoretische Einführung in die Filtration und Druck-/Vakuumprinzipien.
+            </p>
+            <a href="lerneinheit1.html" class="btn btn-primary stretched-link mt-3">Starten</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 bg-light">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title text-primary">Modul 2</h5>
+            <h4 class="card-text my-2">Aufbau</h4>
+            <p class="text-muted small flex-grow-1">
+              Die Komponenten der Nutsche und der Versuchsanlage.
+            </p>
+            <a href="lektion2.html" class="btn btn-primary stretched-link mt-3">Starten</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 bg-light">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title text-primary">Modul 3</h5>
+            <h4 class="card-text my-2">Durchführung</h4>
+            <p class="text-muted small flex-grow-1">
+              Schritt-für-Schritt-Anleitung zur Versuchsdurchführung.
+            </p>
+            <a href="lektion3.html" class="btn btn-primary stretched-link mt-3">Starten</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 bg-light">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title text-primary">Modul 4</h5>
+            <h4 class="card-text my-2">Auswertung & Sicherheit</h4>
+            <p class="text-muted small flex-grow-1">
+              Datenauswertung, Filtrationsparameter und sicherheitsrelevante Aspekte.
+            </p>
+            <a href="lektion4.html" class="btn btn-primary stretched-link mt-3">Starten</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </main>
 
-  <!-- CHATBOT -->
-  <input type="checkbox" id="toggle" />
-
-  <label for="toggle" class="chatbot-float">
-    <img
-      src="http://podplatz.de/wp-content/uploads/2025/05/chatbot.png"
-      alt="Chatbot öffnen"
-      class="chatbot-button" />
-  </label>
-
-  <div id="iframe-container">
-    <iframe
-      src="https://e-learning-xujr2bz4awntkgpj3jhtii.streamlit.app?embed=true"
-      width="600"
-      height="400">
-    </iframe>
-  </div>
-
-  <div class="b-example-divider"></div>
-
-  <!-- FOOTER -->
-  <footer class="text-body-secondary py-5 bg-light min-vh-100">
-    <div class="container">
-      <p class="float-end mb-1">
-        <a href="#">Zurück zum Anfang</a>
-      </p>
-      <p class="mb-1"><a href="/impress">Impressum</a></p>
-      <p class="mb-0"><a href="/privacy">Datenschutz</a></p>
+  <footer class="text-body-secondary py-4 bg-light mt-5">
+    <div class="container text-center">
+      <p class="mb-1">&copy; 2024 Hochschule Merseburg – Projektarbeit Mechanische Verfahrenstechnik</p>
     </div>
   </footer>
 
