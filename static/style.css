@@ -37,5 +37,54 @@
   /* iFrame selbst: ohne Rand */
   #iframe-container iframe {
     border: none;
-    border-radius: 12px; /* optional: falls das iframe selbst sichtbar bleibt */
+    border-radius: 12px;
   }
+  /* H1*/
+h1.display-5 {
+    color: #2F478F !important;
+}
+
+/* Modul Titel*/
+.card-title {
+    color: #2F478F !important;
+}
+
+/* Starten-Button*/
+.btn-primary {
+    background-color: #2F478F !important;
+    border-color: #2F478F !important;
+}
+
+.btn-primary:hover {
+    background-color: #23376F !important;
+    border-color: #23376F !important;
+}
+
+/* HauptButton */
+.btn-primary {
+    background-color: #2F478F !important;
+    border-color: #2F478F !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: #23376F !important;
+    border-color: #23376F !important;
+    transform: translateY(-2px);
+    transition: 0.2s;
+}
+
+
+/* Rahmen Button */
+.btn-outline-primary {
+    border-color: #2F478F !important;
+    color: #2F478F !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #2F478F !important;
+    color: white !important;
+    border-color: #2F478F !important;
+    transform: translateY(-2px);
+    transition: 0.2s;
+}
