@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modul 1 – Grundlagen der Filtration</title>
+  <title>Lerneinheit 1 – Grundlagen der Filtration</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/style.css">
 </head>
@@ -11,8 +12,7 @@
 <body>
 
   <!-- HEADER -->
-  <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow"
-       style="background-color: #2F478F;">
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow" style="background-color: #2F478F;">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">
         Vakuum- und Druckfiltration
@@ -22,20 +22,18 @@
 
   <main class="container my-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h2 class="m-0">Modul 1: Grundlagen der Filtration</h2>
-      <span class="badge bg-secondary">Modul 1 von 4</span>
+      <h2 class="m-0">Grundlagen der Filtration</h2>
+      <span class="badge bg-secondary">Lerneinheit 1 von 4</span>
     </div>
+    <p class="text-muted mb-4">
+      Auf dieser Seite findest du die wichtigsten Grundprinzipien der Filtration.
+    </p>
 
     <!-- LERNEINHEIT -->
     <div class="d-flex justify-content-center mb-5">
       <div style="width: 60%; min-width: 600px;">
-        <iframe
-          src="https://app.lumi.education/api/v1/run/_EQzTI/embed"
-          width="100%"
-          height="550"
-          frameborder="0"
-          allowfullscreen
-          allow="geolocation *; microphone *; camera *; midi *; encrypted-media *">
+        <iframe src="https://app.lumi.education/api/v1/run/_EQzTI/embed" width="100%" height="550" frameborder="0"
+          allowfullscreen allow="geolocation *; microphone *; camera *; midi *; encrypted-media *">
         </iframe>
       </div>
     </div>
@@ -57,7 +55,7 @@
 
   <!-- Hinweis neben dem Bot -->
   <div id="chat-hint" class="chat-hint">
-    ❓ Hilfe nötig? Frag den Lern-Bot!
+    Hilfe nötig? Frag den Lern-Bot!
   </div>
 
   <!-- Chat-Widget (zunächst versteckt) -->
@@ -66,10 +64,7 @@
       <span>Lern-Bot</span>
       <button id="chat-close" type="button" class="btn-close btn-close-white"></button>
     </div>
-    <iframe
-      src="https://e-learning-bot.streamlit.app/?embed=true"
-      title="Lern-Bot"
-      loading="lazy">
+    <iframe src="https://e-learning-bot.streamlit.app/?embed=true" title="Lern-Bot" loading="lazy">
     </iframe>
   </div>
 
@@ -78,29 +73,37 @@
     🤖
   </button>
 
-  <!-- JavaScript für den Chatbot -->
   <script>
     const chatWidget = document.getElementById('chat-widget');
     const openBtn = document.getElementById('chat-open');
     const closeBtn = document.getElementById('chat-close');
+    const chatHint = document.getElementById('chat-hint');
 
-    // Startzustand: Chat geschlossen
+
+    // Startzustand: Widget verstecken
     chatWidget.style.display = 'none';
 
-    // Öffnen
     openBtn.addEventListener('click', () => {
       chatWidget.style.display = 'block';
       openBtn.style.display = 'none';
+      if (chatHint) {
+        chatHint.style.display = 'none';
+      }
     });
 
-    // Schließen
+
     closeBtn.addEventListener('click', () => {
       chatWidget.style.display = 'none';
       openBtn.style.display = 'block';
+      if (chatHint) {
+        chatHint.style.display = 'block';
+      }
     });
+
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

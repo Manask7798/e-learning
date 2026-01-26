@@ -1,111 +1,111 @@
 /* Versteckt das Kontrollkästchen */
-  #toggle {
-    display: none;
-  }
+#toggle {
+  display: none;
+}
 
-  /* Floating Chatbot-Button unten rechts */
-  .chatbot-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-  }
+/* Floating Chatbot-Button unten rechts */
+.chatbot-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
 
-  .chatbot-button {
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-  }
+.chatbot-button {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
 
-  /* iFrame-Container: schöner Stil */
-  #iframe-container {
-    display: none;
-    position: fixed;
-    bottom: 80px; /* über dem Button */
-    right: 20px;
-    z-index: 999;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  }
+/* iFrame-Container: schöner Stil */
+#iframe-container {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 999;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
 
-  /* iFrame anzeigen, wenn Checkbox aktiviert */
-  #toggle:checked ~ #iframe-container {
-    display: block;
-  }
+/* iFrame anzeigen */
+#toggle:checked~#iframe-container {
+  display: block;
+}
 
-  /* iFrame selbst: ohne Rand */
-  #iframe-container iframe {
-    border: none;
-    border-radius: 12px;
-  }
-  /* H1*/
+/* iFrame selbst */
+#iframe-container iframe {
+  border: none;
+  border-radius: 12px;
+}
+
+/* H1*/
 h1.display-5 {
-    color: #2F478F !important;
+  color: #2F478F !important;
 }
 
 /* Modul Titel*/
 .card-title {
-    color: #2F478F !important;
+  color: #2F478F !important;
 }
 
 /* Starten-Button*/
 .btn-primary {
-    background-color: #2F478F !important;
-    border-color: #2F478F !important;
+  background-color: #2F478F !important;
+  border-color: #2F478F !important;
 }
 
 .btn-primary:hover {
-    background-color: #23376F !important;
-    border-color: #23376F !important;
+  background-color: #23376F !important;
+  border-color: #23376F !important;
 }
 
 /* HauptButton */
 .btn-primary {
-    background-color: #2F478F !important;
-    border-color: #2F478F !important;
-    color: white !important;
+  background-color: #2F478F !important;
+  border-color: #2F478F !important;
+  color: white !important;
 }
 
 .btn-primary:hover {
-    background-color: #23376F !important;
-    border-color: #23376F !important;
-    transform: translateY(-2px);
-    transition: 0.2s;
+  background-color: #23376F !important;
+  border-color: #23376F !important;
+  transform: translateY(-2px);
+  transition: 0.2s;
 }
 
 
 /* Rahmen Button */
 .btn-outline-primary {
-    border-color: #2F478F !important;
-    color: #2F478F !important;
+  border-color: #2F478F !important;
+  color: #2F478F !important;
 }
 
 .btn-outline-primary:hover {
-    background-color: #2F478F !important;
-    color: white !important;
-    border-color: #2F478F !important;
-    transform: translateY(-2px);
-    transition: 0.2s;
+  background-color: #2F478F !important;
+  color: white !important;
+  border-color: #2F478F !important;
+  transform: translateY(-2px);
+  transition: 0.2s;
 }
-/* === Chat-Widget unten rechts === */
 
-/* Der Container für das Chat-Fenster */
+/* Der Container - Chat-Fenster */
 #chat-widget {
   position: fixed;
-  bottom: 80px;        /* Abstand vom unteren Rand */
-  right: 20px;         /* Abstand vom rechten Rand */
-  width: 340px;
-  height: 480px;
+  bottom: 20px;
+  right: 20px;
+  width: 500px;
+  height: 80vh;
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   z-index: 1050;
-  display: none;       /* Am Anfang versteckt */
+  display: none;
 }
 
-/* Kopfzeile im Chat-Fenster */
+/* Kopfzeile - Chat-Fenster */
 #chat-widget .chat-header {
   height: 40px;
   background-color: #2F478F;
@@ -117,14 +117,14 @@ h1.display-5 {
   font-size: 0.9rem;
 }
 
-/* Der Inhalt: das Iframe vom Streamlit-Bot */
+/* iFrame im Chat-Fenster */
 #chat-widget iframe {
   width: 100%;
-  height: calc(100% - 40px);  /* Restliche Höhe nach dem Header */
+  height: calc(100% - 40px);
   border: none;
 }
 
-/* Kleiner runder Button unten rechts zum Öffnen */
+/* Floating Action Button */
 .chat-fab {
   position: fixed;
   bottom: 20px;
@@ -140,6 +140,7 @@ h1.display-5 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   padding: 0;
 }
+
 #chat-bubble {
   position: fixed;
   bottom: 90px;
@@ -151,27 +152,35 @@ h1.display-5 {
   border-radius: 14px;
   font-size: 0.85rem;
   z-index: 1035;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   animation: fadein 0.5s ease-out;
 }
 
-/* Kleine Einblend-Animation */
+/*Animation */
 @keyframes fadein {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-/* Hinweistext direkt neben dem Chat-Button */
+
+/* Hinweistext */
 .chat-hint {
   position: fixed;
   bottom: 25px;
   right: 90px;
-  background: #ff7a00;      /* 🔥 ORANGE Hintergrund */
-  color: white;             /* weiße Schrift */
+  background: #ff7a00;
+  color: white;
   padding: 6px 14px;
   border-radius: 14px;
   font-size: 0.85rem;
   z-index: 1100;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
 }
 
@@ -189,10 +198,8 @@ h1.display-5 {
   z-index: 1040;
   padding: 0;
 
-  /* 🔥 ORANGE Farbe */
-  background-color: #ff7a00 !important;  
+  background-color: #ff7a00 !important;
   color: white !important;
 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-

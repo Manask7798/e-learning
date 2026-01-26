@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modul 3 – Video 1: Vakuumfiltration</title>
+  <title>Lerneinheit 3 – Video 1: Vakuumfiltration</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/style.css">
 </head>
@@ -11,8 +12,7 @@
 <body>
 
   <!-- HEADER -->
-  <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow"
-       style="background-color: #2F478F;">
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow" style="background-color: #2F478F;">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">
         Vakuum- und Druckfiltration
@@ -23,19 +23,19 @@
   <main class="container my-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h2 class="m-0">Video 1: Vakuumfiltration</h2>
-      <span class="badge bg-secondary">Modul 3 von 4</span>
+      <span class="badge bg-secondary">Lerneinheit 3 von 4</span>
     </div>
+
+    <p class="text-muted mb-4">
+      Spiele das interaktive Video ab und teste gleichzeitig, wie viel du bereits weißt.
+    </p>
+
 
     <!-- VIDEO 1 -->
     <div class="d-flex justify-content-center mb-5">
       <div style="width: 60%; min-width: 600px;">
-        <iframe
-          src="https://app.lumi.education/api/v1/run/KQkYSW/embed"
-          width="100%"
-          height="550"
-          frameborder="0"
-          allowfullscreen
-          allow="geolocation *; microphone *; camera *; midi *; encrypted-media *">
+        <iframe src="https://app.lumi.education/api/v1/run/Am842-/embed" width="100%" height="550" frameborder="0"
+          allowfullscreen allow="geolocation *; microphone *; camera *; midi *; encrypted-media *">
         </iframe>
       </div>
     </div>
@@ -44,7 +44,7 @@
 
     <!-- Navigation unten -->
     <div class="mt-4 d-flex justify-content-between p-3 bg-light rounded">
-      <a href="lerneinheit2.html" class="btn btn-outline-dark">&larr; Vorheriges Modul</a>
+      <a href="lerneinheit2.html" class="btn btn-outline-dark">&larr; Vorherige Lerneinheit</a>
       <a href="lerneinheit3_2.html" class="btn btn-success">Weiter &rarr;</a>
     </div>
   </main>
@@ -56,13 +56,10 @@
   </footer>
 
 
-  <!-- ======================================= -->
-  <!-- 🚀 CHATBOT - HINWEIS, WIDGET & BUTTON  -->
-  <!-- ======================================= -->
 
   <!-- Hinweis neben dem Bot -->
   <div id="chat-hint" class="chat-hint">
-    ❓ Hilfe nötig? Frag den Lern-Bot!
+    Hilfe nötig? Frag den Lern-Bot!
   </div>
 
   <!-- Chat-Widget (zunächst versteckt) -->
@@ -71,10 +68,7 @@
       <span>Lern-Bot</span>
       <button id="chat-close" type="button" class="btn-close btn-close-white"></button>
     </div>
-    <iframe
-      src="https://e-learning-bot.streamlit.app/?embed=true"
-      title="Lern-Bot"
-      loading="lazy">
+    <iframe src="https://e-learning-bot.streamlit.app/?embed=true" title="Lern-Bot" loading="lazy">
     </iframe>
   </div>
 
@@ -88,22 +82,33 @@
     const chatWidget = document.getElementById('chat-widget');
     const openBtn = document.getElementById('chat-open');
     const closeBtn = document.getElementById('chat-close');
+    const chatHint = document.getElementById('chat-hint');
 
+
+    // Startzustand: Widget verstecken
     chatWidget.style.display = 'none';
 
     openBtn.addEventListener('click', () => {
       chatWidget.style.display = 'block';
       openBtn.style.display = 'none';
+      if (chatHint) {
+        chatHint.style.display = 'none';
+      }
     });
+
 
     closeBtn.addEventListener('click', () => {
       chatWidget.style.display = 'none';
       openBtn.style.display = 'block';
+      if (chatHint) {
+        chatHint.style.display = 'block';
+      }
     });
-  </script>
 
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

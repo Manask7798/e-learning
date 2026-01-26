@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -13,8 +14,7 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow"
-       style="background-color: #2F478F;">
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow" style="background-color: #2F478F;">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">
         Vakuum- und Druckfiltration
@@ -34,7 +34,7 @@
 
     <div class="text-center mb-4">
       <h2>Lerneinheiten wählen</h2>
-      <p class="text-muted">Bitte bearbeiten Sie die Module in der vorgegebenen Reihenfolge.</p>
+      <p class="text-muted">Bitte bearbeiten Sie die Lerneinheiten in der vorgegebenen Reihenfolge.</p>
     </div>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -42,7 +42,7 @@
       <div class="col">
         <div class="card h-100 shadow-sm border-0 bg-light">
           <div class="card-body text-center d-flex flex-column">
-            <h5 class="card-title text-primary">Modul 1</h5>
+            <h5 class="card-title text-primary">Lerneinheit 1</h5>
             <h4 class="card-text my-2">Grundlagen</h4>
             <p class="text-muted small flex-grow-1">
               Einführung in Filtration &amp; Druck/Vakuum.
@@ -59,7 +59,7 @@
       <div class="col">
         <div class="card h-100 shadow-sm border-0 bg-light">
           <div class="card-body text-center d-flex flex-column">
-            <h5 class="card-title text-primary">Modul 2</h5>
+            <h5 class="card-title text-primary">Lerneinheit 2</h5>
             <h4 class="card-text my-2">Vorbereitung des Praktikumsversuchs</h4>
             <p class="text-muted small flex-grow-1">
               Videoanleitung und Grundlagen zum Versuchsaufbau.
@@ -75,13 +75,14 @@
       <div class="col">
         <div class="card h-100 shadow-sm border-0 bg-light">
           <div class="card-body text-center d-flex flex-column">
-            <h5 class="card-title text-primary">Modul 3</h5>
+            <h5 class="card-title text-primary">Lerneinheit 3</h5>
             <h4 class="card-text my-2">Durchführung</h4>
             <p class="text-muted small flex-grow-1">
-              Videoanleitungzur Druck- und Vakuumfiltration im Labor. 
+              Videoanleitungzur Druck- und Vakuumfiltration im Labor.
             </p>
-            <a href="lerneinheit3_1.html" class="btn btn-primary stretched-link mt-3">Video 1. Starten</a>
-            <a href="lerneinheit3_2.html" class="btn btn-primary stretched-link mt-3">Video 2. Starten</a>
+            <a href="lerneinheit3_1.html" class="btn btn-primary mt-3">1. Video starten</a>
+            <a href="lerneinheit3_2.html" class="btn btn-primary mt-3">2. Video starten</a>
+
           </div>
         </div>
       </div>
@@ -89,7 +90,7 @@
       <div class="col">
         <div class="card h-100 shadow-sm border-0 bg-light">
           <div class="card-body text-center d-flex flex-column">
-            <h5 class="card-title text-primary">Modul 4</h5>
+            <h5 class="card-title text-primary">Lerneinheit 4</h5>
             <h4 class="card-text my-2">Auswertung</h4>
             <p class="text-muted small flex-grow-1">
               Interaktives Video
@@ -111,19 +112,16 @@
 
   <!-- Hinweis neben dem Bot -->
   <div id="chat-hint" class="chat-hint">
-    ❓ Hilfe nötig? Frag den Lern-Bot!
+    Hilfe nötig? Frag den Lern-Bot!
   </div>
 
-  <!-- Chat-Widget (zunächst versteckt) -->
+  <!-- Chat-Widget  -->
   <div id="chat-widget">
     <div class="chat-header">
       <span>Lern-Bot</span>
       <button id="chat-close" type="button" class="btn-close btn-close-white"></button>
     </div>
-    <iframe
-      src="https://e-learning-bot.streamlit.app/?embed=true"
-      title="Lern-Bot"
-      loading="lazy">
+    <iframe src="https://e-learning-bot.streamlit.app/?embed=true" title="Lern-Bot" loading="lazy">
     </iframe>
   </div>
 
@@ -139,21 +137,30 @@
     const chatWidget = document.getElementById('chat-widget');
     const openBtn = document.getElementById('chat-open');
     const closeBtn = document.getElementById('chat-close');
+    const chatHint = document.getElementById('chat-hint');
+
 
     // Startzustand: Widget verstecken
     chatWidget.style.display = 'none';
 
-    // Öffnen
     openBtn.addEventListener('click', () => {
       chatWidget.style.display = 'block';
       openBtn.style.display = 'none';
+      if (chatHint) {
+        chatHint.style.display = 'none';
+      }
     });
 
-    // Schließen
+
     closeBtn.addEventListener('click', () => {
       chatWidget.style.display = 'none';
       openBtn.style.display = 'block';
+      if (chatHint) {
+        chatHint.style.display = 'block';
+      }
     });
+
   </script>
 </body>
+
 </html>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz zum Modul 1</title>
+  <title>Quiz zum Lerneinheit 1</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/style.css">
 </head>
@@ -11,8 +12,7 @@
 <body>
 
   <!-- HEADER -->
-  <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow"
-       style="background-color: #2F478F;">
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow" style="background-color: #2F478F;">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">
         Vakuum- und Druckfiltration
@@ -22,8 +22,8 @@
 
   <main class="container my-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h2 class="m-0">Quiz zum Modul 1</h2>
-      <span class="badge bg-secondary">Modul 1 von 4</span>
+      <h2 class="m-0">Quiz zum Lerneinheit 1</h2>
+      <span class="badge bg-secondary">Lerneinheit 1 von 4</span>
     </div>
 
     <p class="text-muted mb-4">
@@ -33,13 +33,8 @@
     <!-- Test -->
     <div class="d-flex justify-content-center mb-5">
       <div style="width: 60%; min-width: 600px;">
-        <iframe
-          src="https://app.lumi.education/api/v1/run/7k858U/embed"
-          width="100%"
-          height="550"
-          frameborder="0"
-          allowfullscreen
-          allow="geolocation *; microphone *; camera *; midi *; encrypted-media *">
+        <iframe src="https://app.lumi.education/api/v1/run/7k858U/embed" width="100%" height="550" frameborder="0"
+          allowfullscreen allow="geolocation *; microphone *; camera *; midi *; encrypted-media *">
         </iframe>
       </div>
     </div>
@@ -49,7 +44,7 @@
     <!-- Navigation -->
     <div class="mt-4 d-flex justify-content-between p-3 bg-light rounded">
       <a href="lerneinheit1.html" class="btn btn-outline-dark">&larr; Zurück </a>
-      <a href="lerneinheit2.html" class="btn btn-success">Nächstes Modul &rarr;</a>
+      <a href="lerneinheit2.html" class="btn btn-success">Nächste Lerneinheit &rarr;</a>
     </div>
   </main>
 
@@ -61,19 +56,16 @@
 
   <!-- Hinweis neben dem Bot -->
   <div id="chat-hint" class="chat-hint">
-    ❓ Hilfe nötig? Frag den Lern-Bot!
+    Hilfe nötig? Frag den Lern-Bot!
   </div>
 
-  <!-- Chat-Widget (zunächst versteckt) -->
+  <!-- Chat-Widget -->
   <div id="chat-widget">
     <div class="chat-header">
       <span>Lern-Bot</span>
       <button id="chat-close" type="button" class="btn-close btn-close-white"></button>
     </div>
-    <iframe
-      src="https://e-learning-bot.streamlit.app/?embed=true"
-      title="Lern-Bot"
-      loading="lazy">
+    <iframe src="https://e-learning-bot.streamlit.app/?embed=true" title="Lern-Bot" loading="lazy">
     </iframe>
   </div>
 
@@ -87,24 +79,32 @@
     const chatWidget = document.getElementById('chat-widget');
     const openBtn = document.getElementById('chat-open');
     const closeBtn = document.getElementById('chat-close');
+    const chatHint = document.getElementById('chat-hint');
 
-    // Startzustand: Chat geschlossen
+
+    // Startzustand: Widget verstecken
     chatWidget.style.display = 'none';
 
-    // Öffnen
     openBtn.addEventListener('click', () => {
       chatWidget.style.display = 'block';
       openBtn.style.display = 'none';
+      if (chatHint) {
+        chatHint.style.display = 'none';
+      }
     });
 
-    // Schließen
+
     closeBtn.addEventListener('click', () => {
       chatWidget.style.display = 'none';
       openBtn.style.display = 'block';
+      if (chatHint) {
+        chatHint.style.display = 'block';
+      }
     });
-  </script>
 
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
