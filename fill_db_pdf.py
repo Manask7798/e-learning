@@ -8,24 +8,61 @@ from dotenv import load_dotenv
 load_dotenv()
 documents = {
      "doc1" : {
-         "title" : "Einführung in die Verfahrenstechnik",
+         "title" : "Zogg, Martin: Einführung in die Verfahrenstechnik",
          "path" : "sources/ZOGG-noch-kürzer.pdf"
+     },
+     "doc2" : {
+         "title" : "Bedienungsanleitung Ilmvac",
+         "path" : "sources/Bedienungsanleitung.pdf"
+     },
+    "doc3" : {
+         "title" : "Betriebsanweisung Druckfilter",
+         "path" : "sources/Betriebsanweisung_Druckfilter.pdf"
+     },
+    "doc4" : {
+         "title" : "Betriebsanweisung Vakuumfilter",
+         "path" : "sources/Betriebsanweisung_Vakuumfilter.pdf"
+     },
+    "doc5" : {
+         "title" : "Beispiel-Protokolle",
+         "path" : "sources/Bsp_Protokolle.pdf"
+     },
+    "doc6" : {
+         "title" : "Protokollinhalte",
+         "path" : "sources/Protokollinhalte.pdf"
      }
+
+     
+
+     
  }
-# # PDF laden
+# PDF laden
 pages = []
 for key, doc in documents.items():
-     reader = PdfReader(doc["path"])
-     for page_number, page in enumerate(reader.pages, start=95):
-         text = page.extract_text()
-         if text:
-             pages.append({
-                 "page": page_number,
-                 "text": text,
-                 "title": doc["title"]
-             })
+    reader = PdfReader(doc["path"])
 
-print(f"Loaded PDF with {len(pages)} pages")
+    if key == "doc1":
+        start_page_number = 95
+    else:
+        start_page_number = 1
+
+    for page_number, page in enumerate(reader.pages, start=start_page_number):
+        text = page.extract_text()
+        if text:
+            pages.append({
+                "page": page_number,
+                "text": text,
+                "title": doc["title"]
+            })
+from collections import defaultdict
+
+per_doc = defaultdict(list)
+for p in pages:
+    per_doc[p["title"]].append(p["page"])
+
+for title, pg in per_doc.items():
+    print(title, "Seiten:", min(pg), "bis", max(pg))
+
 
 # Text in kleinere Bestandteile (Chunks) aufteilen
 text_splitter = RecursiveCharacterTextSplitter(

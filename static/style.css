@@ -88,3 +88,111 @@ h1.display-5 {
     transform: translateY(-2px);
     transition: 0.2s;
 }
+/* === Chat-Widget unten rechts === */
+
+/* Der Container für das Chat-Fenster */
+#chat-widget {
+  position: fixed;
+  bottom: 80px;        /* Abstand vom unteren Rand */
+  right: 20px;         /* Abstand vom rechten Rand */
+  width: 340px;
+  height: 480px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 1050;
+  display: none;       /* Am Anfang versteckt */
+}
+
+/* Kopfzeile im Chat-Fenster */
+#chat-widget .chat-header {
+  height: 40px;
+  background-color: #2F478F;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 0.9rem;
+}
+
+/* Der Inhalt: das Iframe vom Streamlit-Bot */
+#chat-widget iframe {
+  width: 100%;
+  height: calc(100% - 40px);  /* Restliche Höhe nach dem Header */
+  border: none;
+}
+
+/* Kleiner runder Button unten rechts zum Öffnen */
+.chat-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  z-index: 1040;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 0;
+}
+#chat-bubble {
+  position: fixed;
+  bottom: 90px;
+  right: 80px;
+  background: white;
+  border: 2px solid #2F478F;
+  color: #2F478F;
+  padding: 8px 14px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  z-index: 1035;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: fadein 0.5s ease-out;
+}
+
+/* Kleine Einblend-Animation */
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Hinweistext direkt neben dem Chat-Button */
+.chat-hint {
+  position: fixed;
+  bottom: 25px;
+  right: 90px;
+  background: #ff7a00;      /* 🔥 ORANGE Hintergrund */
+  color: white;             /* weiße Schrift */
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  z-index: 1100;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+
+.chat-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  z-index: 1040;
+  padding: 0;
+
+  /* 🔥 ORANGE Farbe */
+  background-color: #ff7a00 !important;  
+  color: white !important;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+

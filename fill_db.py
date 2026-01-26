@@ -3,6 +3,8 @@ import os
 from uuid import uuid4
 from langchain_core.documents import Document
 import chromadb
+import langgraph
+
 
 
 # Vekordatenbank einrichten
